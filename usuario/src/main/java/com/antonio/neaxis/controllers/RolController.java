@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.antonio.neaxis.dto.UsuarioRequest;
-import com.antonio.neaxis.dto.UsuarioResponse;
-import com.antonio.neaxis.services.UsuarioService;
+import com.antonio.neaxis.dto.RolRequest;
+import com.antonio.neaxis.dto.RolResponse;
+import com.antonio.neaxis.services.RolService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -23,32 +23,32 @@ import lombok.AllArgsConstructor;
 @RestController
 @Validated
 @AllArgsConstructor
-public class UsuarioController {
+public class RolController {
 	
-	private final UsuarioService service;
+	private final RolService service;
 
-	@GetMapping("/usuarios")
-	public ResponseEntity<List<UsuarioResponse>> obtenerTodos(){
+	@GetMapping("/roles")
+	public ResponseEntity<List<RolResponse>> obtenerTodos(){
 		return ResponseEntity.ok(service.obtenerTodos());
 	}
 	
-	@GetMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponse> obtenerPorId(@PathVariable Long id){
+	@GetMapping("/roles/{id}")
+	public ResponseEntity<RolResponse> obtenerPorId(@PathVariable Long id){
 		return ResponseEntity.ok(service.obtenerPorId(id));
 	}
 	
-	@PostMapping("/usuarios")
-	public ResponseEntity<UsuarioResponse> registrar(@Valid @RequestBody UsuarioRequest request){
+	@PostMapping("/roles")
+	public ResponseEntity<RolResponse> registrar(@Valid @RequestBody RolRequest request){
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.insertar(request));
 	}
 	
-	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponse> actualizar(@PathVariable Long id, @RequestBody UsuarioRequest request){
+	@PutMapping("/roles/{id}")
+	public ResponseEntity<RolResponse> actualizar(@PathVariable Long id, @RequestBody RolRequest request){
 		return ResponseEntity.ok(service.actualizar(id, request));
 	}
 	
-	@DeleteMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponse> eliminar(@PathVariable Long id){
+	@DeleteMapping("/roles/{id}")
+	public ResponseEntity<RolResponse> eliminar(@PathVariable Long id){
 		service.eliminar(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

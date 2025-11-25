@@ -13,7 +13,21 @@ spring:
       - id: usuario
         uri: lb://usuario
         predicates:
-         - Path=/api/usuarios/**
+         - Path=/api/users/**
+        filters:
+         - StripPrefix=2
+
+      - id: persona
+        uri: lb://persona
+        predicates:
+         - Path=/api/personas/**
+        filters:
+         - StripPrefix=2
+
+      - id: publicacion
+        uri: lb://publicacion
+        predicates:
+         - Path=/api/publicaciones/**
         filters:
          - StripPrefix=2
 

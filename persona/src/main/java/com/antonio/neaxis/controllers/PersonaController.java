@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.antonio.neaxis.dto.UsuarioRequest;
-import com.antonio.neaxis.dto.UsuarioResponse;
-import com.antonio.neaxis.services.UsuarioService;
+import com.antonio.neaxis.dto.PersonaRequest;
+import com.antonio.neaxis.dto.PersonaResponse;
+import com.antonio.neaxis.services.PersonaService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -23,32 +23,32 @@ import lombok.AllArgsConstructor;
 @RestController
 @Validated
 @AllArgsConstructor
-public class UsuarioController {
+public class PersonaController {
 	
-	private final UsuarioService service;
+	private final PersonaService service;
 
-	@GetMapping("/usuarios")
-	public ResponseEntity<List<UsuarioResponse>> obtenerTodos(){
+	@GetMapping()
+	public ResponseEntity<List<PersonaResponse>> obtenerTodos(){
 		return ResponseEntity.ok(service.obtenerTodos());
 	}
 	
-	@GetMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponse> obtenerPorId(@PathVariable Long id){
+	@GetMapping("/{id}")
+	public ResponseEntity<PersonaResponse> obtenerPorId(@PathVariable Long id){
 		return ResponseEntity.ok(service.obtenerPorId(id));
 	}
 	
-	@PostMapping("/usuarios")
-	public ResponseEntity<UsuarioResponse> registrar(@Valid @RequestBody UsuarioRequest request){
+	@PostMapping()
+	public ResponseEntity<PersonaResponse> registrar(@Valid @RequestBody PersonaRequest request){
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.insertar(request));
 	}
 	
-	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponse> actualizar(@PathVariable Long id, @RequestBody UsuarioRequest request){
+	@PutMapping("/{id}")
+	public ResponseEntity<PersonaResponse> actualizar(@PathVariable Long id, @RequestBody PersonaRequest request){
 		return ResponseEntity.ok(service.actualizar(id, request));
 	}
 	
-	@DeleteMapping("/usuarios/{id}")
-	public ResponseEntity<UsuarioResponse> eliminar(@PathVariable Long id){
+	@DeleteMapping("/{id}")
+	public ResponseEntity<PersonaResponse> eliminar(@PathVariable Long id){
 		service.eliminar(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

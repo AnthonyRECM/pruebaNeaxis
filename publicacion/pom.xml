@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.antonio.neaxis</groupId>
-	<artifactId>persona</artifactId>
+	<artifactId>publicacion</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>persona</name>
-	<description>Proyecto miniblog - persona</description>
+	<name>publicacion</name>
+	<description>Proyecto miniblog - publicacion</description>
 	<url/>
 	<licenses>
 		<license/>

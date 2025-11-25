@@ -1,21 +1,25 @@
 package com.antonio.neaxis.mappers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
+import com.antonio.neaxis.dto.RolResponse;
 import com.antonio.neaxis.dto.UsuarioRequest;
+import com.antonio.neaxis.dto.UsuarioResponse;
 import com.antonio.neaxis.entities.Usuario;
-import com.antonio.neaxis.entities.UsuarioResponse;
 
 @Component
 public class UsuarioMapper {
 
-	public UsuarioResponse entityToResponse(Usuario usuario) {
+	public UsuarioResponse entityToResponse(Usuario usuario, List<RolResponse> roles) {
 		if (usuario == null) return null;
 		return new UsuarioResponse(
 				usuario.getId(),
 				usuario.getUsuario(),
 				usuario.getContraseña(),
-				usuario.getEstado()
+				usuario.getEstado(),
+				roles
 		);
 	}
 	

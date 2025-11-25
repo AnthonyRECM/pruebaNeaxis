@@ -29,15 +29,15 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "USUARIO")
+	@Column(name = "USUARIO", nullable = false)
 	@NotNull(message = "El usuario es requerido")
 	private String usuario;
 	
-	@Column(name = "CONTRASEÑA")
+	@Column(name = "CONTRASEÑA", nullable = false)
 	@NotNull(message = "La contraseña es requerida")
 	private String contraseña;
 	
-	@Column(name = "ESTADO")
+	@Column(name = "ESTADO", nullable = false)
 	private String estado;
 	
 	@ManyToMany
@@ -46,5 +46,5 @@ public class Usuario {
 			joinColumns = @JoinColumn(name = "ID_USUARIO"),
 			inverseJoinColumns = @JoinColumn(name = "ID_ROL")
 	)
-	private List<Usuario> usuarios;
+	private List<Rol> roles;
 }

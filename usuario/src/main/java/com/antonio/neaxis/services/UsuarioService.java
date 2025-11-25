@@ -3,7 +3,7 @@ package com.antonio.neaxis.services;
 import java.util.List;
 
 import com.antonio.neaxis.dto.UsuarioRequest;
-import com.antonio.neaxis.entities.UsuarioResponse;
+import com.antonio.neaxis.dto.UsuarioResponse;
 
 public interface UsuarioService {
 	
